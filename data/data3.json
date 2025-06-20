@@ -1,0 +1,22 @@
+[
+    {
+        "name": "red prod page",
+        "hostname": "localhost.h1",
+        "port": "8008"
+    },
+    {
+        "name": "red user check page",
+        "hostname": "localhost.h2",
+        "port": "8009"
+    },
+    {
+        "name": "red car details page",
+        "hostname": "localhost.h3",
+        "port": "8007"
+    },
+    {
+        "name": "red dog details page",
+        "hostname": "localhost.h5",
+        "port": ""
+    }
+]
