@@ -1,31 +1,32 @@
 from flask import Flask, render_template, jsonify
 import requests
 from datetime import datetime
+import json
 
 app = Flask(__name__)
 
-ENDPOINTS = [
-    {
-        "name": "prod page",
-        "hostname": "localhost.v1",
-        "port": "8081"
-    },
-    {
-        "name": "user check page",
-        "hostname": "localhost.v2",
-        "port": "8082"
-    },
-    {
-        "name": "car details page",
-        "hostname": "localhost.v3",
-        "port": ""
-    },
-    {
-        "name": "dog details page",
-        "hostname": "localhost.v5",
-        "port": ""
-    }
-]
+# ENDPOINTS = [
+#     {
+#         "name": "prod page",
+#         "hostname": "localhost.v1",
+#         "port": "8081"
+#     },
+#     {
+#         "name": "user check page",
+#         "hostname": "localhost.v2",
+#         "port": "8082"
+#     },
+#     {
+#         "name": "car details page",
+#         "hostname": "localhost.v3",
+#         "port": ""
+#     },
+#     {
+#         "name": "dog details page",
+#         "hostname": "localhost.v5",
+#         "port": ""
+#     }
+# ]
 
 ACTUATOR_PATHS = {
     'health': '/actuator/health',
@@ -62,6 +63,9 @@ def index():
 def api_status():
     app_results = []
     last_checked = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    ENDPOINTS=[]
+    with open("data1.json","+r") as f1:
+        ENDPOINTS = json.load(f1)
     for app_info in ENDPOINTS:
         app_name = app_info['name']
         hostname = app_info['hostname']
@@ -74,6 +78,7 @@ def api_status():
         info_details = None
         for key, path in ACTUATOR_PATHS.items():
             url = base_url + path
+            print("check url: "+url)
             result = check_endpoint(url)
             results[key] = {
                 'url': url,

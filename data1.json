@@ -1,0 +1,22 @@
+[
+    {
+        "name": "prod page",
+        "hostname": "localhost.v1",
+        "port": "8081"
+    },
+    {
+        "name": "user check page",
+        "hostname": "localhost.v2",
+        "port": "8082"
+    },
+    {
+        "name": "car details page",
+        "hostname": "localhost.v3",
+        "port": ""
+    },
+    {
+        "name": "dog details page",
+        "hostname": "localhost.v5",
+        "port": ""
+    }
+]
