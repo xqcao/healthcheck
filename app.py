@@ -72,6 +72,17 @@ def load_endpoints(data_folder):
                     print(f"Error decoding {filename}: {e}")
     return ENDPOINTS
 
+@app.route('/list')
+def get_file_name_list():
+    json_folder ="data"
+    file_list=[]
+    for filename in os.listdir(json_folder):
+        if filename.endswith(".json"):
+            file_list.append(filename.replace(".json",""))
+    return file_list
+
+
+
 def build_base_url(hostname, port):
     return f"http://{hostname}:{port}" if port else f"http://{hostname}"
 
